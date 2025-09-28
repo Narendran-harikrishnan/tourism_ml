@@ -25,7 +25,7 @@ jobs:
 
       - name: Upload Dataset to Hugging Face Hub
         env:
-          HF_TOKEN: "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"
+          HF_TOKEN: "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"
         run: |
           SCRIPT_PATH=$(find . -name "data_register.py" | head -n 1)
           if [ -z "$SCRIPT_PATH" ]; then
@@ -56,7 +56,7 @@ jobs:
 
       - name: Run Data Preparation
         env:
-          HF_TOKEN: "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"
+          HF_TOKEN: "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"
         run: |
           SCRIPT_PATH=$(find . -name "prep.py" | head -n 1)
           if [ -z "$SCRIPT_PATH" ]; then
@@ -92,7 +92,7 @@ jobs:
 
       - name: Train Model
         env:
-          HF_TOKEN: "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"
+          HF_TOKEN: "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"
         run: |
           SCRIPT_PATH=$(find . -name "train.py" | head -n 1)
           if [ -z "$SCRIPT_PATH" ]; then
@@ -123,7 +123,7 @@ jobs:
 
       - name: Deploy to Hugging Face Space
         env:
-          HF_TOKEN: "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"
+          HF_TOKEN: "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"
         run: |
           SCRIPT_PATH=$(find . -name "hosting.py" | head -n 1)
           if [ -z "$SCRIPT_PATH" ]; then
