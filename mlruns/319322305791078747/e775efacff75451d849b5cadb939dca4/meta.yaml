@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/319322305791078747/e775efacff75451d849b5cadb939dca4/artifacts
+end_time: 1759079461894
+entry_point_name: ''
+experiment_id: '319322305791078747'
+lifecycle_stage: active
+run_id: e775efacff75451d849b5cadb939dca4
+run_name: bold-sloth-714
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1759079449551
+status: 3
+tags: []
+user_id: root
