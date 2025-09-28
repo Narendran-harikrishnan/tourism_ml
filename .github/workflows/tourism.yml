@@ -1,10 +1,12 @@
-name: Tourism MLOps Pipeline
+name: Tourism ML Pipeline
 
 on:
   push:
     branches:
       - main
+
 jobs:
+
   register-dataset:
     runs-on: ubuntu-latest
     steps:
@@ -24,6 +26,8 @@ jobs:
           pip install -r $REQ
 
       - name: Upload Dataset to Hugging Face Hub
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           SCRIPT_PATH=$(find . -name "data_register.py" | head -n 1)
           if [ -z "$SCRIPT_PATH" ]; then
@@ -53,6 +57,8 @@ jobs:
           pip install -r $REQ
 
       - name: Run Data Preparation
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           SCRIPT_PATH=$(find . -name "prep.py" | head -n 1)
           if [ -z "$SCRIPT_PATH" ]; then
@@ -87,6 +93,8 @@ jobs:
           sleep 5
 
       - name: Train Model
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           SCRIPT_PATH=$(find . -name "train.py" | head -n 1)
           if [ -z "$SCRIPT_PATH" ]; then
@@ -116,6 +124,8 @@ jobs:
           pip install -r $REQ
 
       - name: Deploy to Hugging Face Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           SCRIPT_PATH=$(find . -name "hosting.py" | head -n 1)
           if [ -z "$SCRIPT_PATH" ]; then
@@ -124,4 +134,3 @@ jobs:
           fi
           echo "Running $SCRIPT_PATH"
           python $SCRIPT_PATH
-        
